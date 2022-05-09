@@ -19,14 +19,13 @@ function Todo() {
 
     const addWorks = () => {
         setWork('')
-
         if (!work) {
             setText('Please enter the work first..')
         }
 
         else if (editIndex) {
             const updatedlists = list.map((item, index) => {
-                if (index == editIndex) {
+                if (index + 1 == editIndex) {
                     return work
                 }
                 else {
@@ -44,10 +43,6 @@ function Todo() {
         }
     }
 
-    const findWorks = () => {
-
-    }
-
     const deleteItem = (id) => {
         const upadtedList = list.filter((item, index) => {
             return index !== id;
@@ -56,8 +51,9 @@ function Todo() {
     }
 
     const editItems = (id) => {
-        setEditIndex(id)
         setWork(list[id])
+        setEditIndex(id + 1)
+
     }
 
     const deleteAll = () => {
@@ -73,7 +69,7 @@ function Todo() {
                     <p className='errorText'>{text}</p>
                     <input type="text" placeholder='Enter your todo work' value={work} onChange={handleWorks} required />
                     <button className="addButton" onClick={addWorks}>Add</button>
-                    <button className="findButton" onClick={findWorks}><i class="fas fa-search"></i></button>
+                    <button className="findButton"><i class="fas fa-search"></i></button>
                     {/* <h5>{work}</h5> */}
                     <div className="workLists">
                         {

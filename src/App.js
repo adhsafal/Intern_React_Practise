@@ -2,14 +2,16 @@ import React from 'react'
 import Blogs from './Blogs'
 import Form from './Form'
 import Todo from './Todo'
+import Calculator from './Calculator'
 
 
 const App = () => {
   return (
     <div>
-      {/* <Todo /> */}
+      <Todo />
       {/* <Form /> */}
-      <Blogs />
+      {/* <Blogs /> */}
+      {/* <Calculator /> */}
     </div>
   )
 }

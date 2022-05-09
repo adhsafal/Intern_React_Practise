@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import CustomInput from './CustomInput'
 import CustomSelect from './CustomSelect'
 import CustomTextarea from './CustomTextarea'
-import HomeLayout from './HomeLayout'
+// import HomeLayout from './HomeLayout'
 import SingleBlogs from './SingleBlogs'
 import SingleBlogsimport from './SingleBlogs'
 
@@ -20,8 +20,9 @@ const Blogs = () => {
     }
 
 
-    const { handleSubmit, control } = useForm({ defaultValues })
+    const { handleSubmit, control, watch } = useForm({ defaultValues })
 
+    console.log(watch(['title', 'slug', 'select', 'description']))
 
     const [lists, setLists] = useState([])
 
@@ -79,7 +80,7 @@ const Blogs = () => {
     }
 
     return (
-        <HomeLayout>
+        <>
             <div className="all">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="blogsWrapper">
@@ -95,7 +96,7 @@ const Blogs = () => {
                             <p>Image</p>
                             {image && <img src={URL?.createObjectURL(image)} width='250px' height='300px' alt="Blogs Images" />}
                             <input className='uploadImage' type='file' name="picture" onChange={handleImage} ref={upload} />
-                            <span onClick={uploadImage}><i class="fas fa-camera"></i></span>
+                            <span onClick={uploadImage}><i className="fas fa-camera"></i></span>
                         </div>
                         <div className="blogsCategory">
                             <p>Select</p>
@@ -110,7 +111,7 @@ const Blogs = () => {
                 </form>
                 <SingleBlogs datas={lists} />
             </div>
-        </HomeLayout>
+        </>
     )
 }
 
